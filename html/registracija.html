@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+  <title>Registracija</title>
+  <link rel="stylesheet" href="../css/stil.css">
+</head>
+
+<body>
+  
+  <div>
+    <nav class="navigacija">
+        <div class="w3-bar w3-black">
+            <a href="index.html" class="w3-bar-item w3-button"> Početna stranica </a>
+            <a href="Ponude.html" class="w3-bar-item w3-button"> Ponude </a>
+            <a href="Kontakt.html" class="w3-bar-item w3-button"> Kontakt</a>
+            <a href="registracija.html" class="w3-bar-item w3-button"> Registracija</a>
+        </div>
+    </nav>
+</div>
+
+  <h2>Registracija</h2>
+  <form action="index.html">
+    
+    <label for="ime" class="label">Ime:</label>
+    <input type="text" id="ime" name="ime" required><br><br>
+    
+    <label for="prezime" class="label">Prezime:</label>
+    <input type="text" id="prezime" name="prezime" required><br><br>
+    
+    <label for="email" class="label">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="lozinka" class="label">Lozinka:</label>
+    <input type="password" id="lozinka" name="lozinka" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Lozinka mora sadržavati veliko, malo slovo, broj i minimalno 8 znamenaka." required><br><br>
+
+    <!--(?=.*\d) za minimalno jednu brojku
+        (?=.*[a-z]) za minimalno jedno malo slovo
+        (?=.*[A-Z]) za minimalno jedno veliko slovo
+        .{8,} da ima minimalno 8 znakova-->
+
+    <input type="submit" value="Registriraj se">
+  </form>
+</body>
+</html>

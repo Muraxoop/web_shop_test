@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Web-shop mobiteli</title>
+        <link rel="stylesheet" href="../css/stil.css">
+        <!--link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"-->
+
+        <script>
+          function ispisPodataka() {
+
+            let tel=document.getElementById("brojtelefona").innerHTML;
+              document.getElementById("ispis").innerHTML=tel;
+
+            let navContent = document.getElementById("navigacija").innerHTML;
+              document.getElementById("ispis1").innerHTML = navContent;
+
+          }
+
+          function posalji(){
+
+              //alert("poziva se")
+             let email=document.getElementById("email").value;
+             let poruka=document.getElementById("poruka").value;
+
+             const httpRequest = new XMLHttpRequest();
+             httpRequest.onreadystatechange = function()
+             {
+                if(httpRequest.readyState==4)
+                {
+                  document.getElementById("korisnik_Unos").innerHTML=httpRequest.responseText;
+                }
+             }
+             httpRequest.open("GET","../php/obrada.php?email="+email+"&poruka="+poruka);
+             httpRequest.send();
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        
+      <style>
+        body {
+            background-image: url('https://images7.alphacoders.com/131/1319607.jpeg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        h1 {
+            margin: 10px;
+            }
+
+        p {
+            margin: 10px;
+            }
+
+        div {
+            margin: 10px;
+            }
+        h2 {
+          margin: 10px;
+        }
+
+    </style>
+
+<div>
+  <nav class="navigacija" id="navigacija">
+      <div class="w3-bar w3-black">
+          <a href="index.html" class="w3-bar-item w3-button"> Početna stranica </a>
+          <a href="Ponude.html" class="w3-bar-item w3-button"> Ponude </a>
+          <a href="Kontakt.html" class="w3-bar-item w3-button"> Kontakt</a>
+          <a href="registracija.html" class="w3-bar-item w3-button"> Registracija</a>
+      </div>
+  </nav>
+</div>
+
+<h1 class="w3-text-red">Web shop - mobitela</h1>
+        <h2 class="w3-text-red">Kontakt</h2>
+            <div class="w3-text-red" id="brojtelefona">Broj telefona: 000/111-777</div>
+            <div class="w3-text-red">
+                Sjedište
+                <a href="https://www.google.com/maps/place/Vukovarska+ul.+58,+51000,+Rijeka/@45.3375053,14.4258786,17z/data=!3m1!4b1!4m6!3m5!1s0x4764a12fa17eb299:0x39762c7665fa594c!8m2!3d45.3375053!4d14.4258786!16s%2Fg%2F11c2g1mphq?entry=ttu" target="_blank">
+                  Vukovarska 58, 51000 Rijeka
+                </a>
+                <br>
+                <br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.834237350335!2d14.425878615557716!3d45.337505279100005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4764a12fa17eb299%3A0x39762c7665fa594c!2sVukovarska%2058%2C%2051000%20Rijeka!5e0!3m2!1sen!2shr!4v1594372917582!5m2!1sen!2shr" width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              </div>
+
+<br><br>
+              <div class="w3-text-red">Ako želite postaviti upit ili ostaviti poruku, kontaktirati ćemo Vas na unesenu e-mail adresu: </div>
+              <div class="w3-text-red">
+                <label for="">Unesite Vašu e-mail adresu:</label>
+                <br>
+                <input type="email" name="" id="email">
+                <br>
+              </div>
+              <div class="w3-text-red">
+                <label for="">Unesite poruku:</label>
+                <br>
+                <textarea name="" id="poruka" cols="49" rows="5"></textarea>
+              </div>
+              <div>
+                <input type="button" value="Pošalji" onclick="posalji()">
+              </div>
+
+
+              <div id="korisnik_Unos"></div>
+              <div id="ispis"></div>
+              <div id="ispis1"></div>
+
+              <script>
+                document.write("<div class='w3-container w3-black'> ");
+                document.write("Web sjedište <i> Web-shop mobiteli, </i> izrađeno je u sklopu kolegija Programiranje za internet");
+                document.write("</div>");
+                ispisPodataka();
+              </script>
+        </body>
+</html>
