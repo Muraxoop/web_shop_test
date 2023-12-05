@@ -51,13 +51,13 @@ app.delete("/korisnik/:id", function (request, response){
 app.get("/korisnik/:id", function (request, response) {
 
     var id = request.params.id;
-    return response.send({message: id +" crud"});
+    return response.send({message: "READ korisnik "+id});
 
 })
 
 app.get("/korisnik", function (request, response) {
 
-    return response.send("crud");
+    return response.send({message: "READ korisnik (svi)"});
 
 })
 
