@@ -48,6 +48,21 @@ app.delete("/korisnik/:id", function (request, response){
 
 })
 
+app.get("/korisnik/:id", function (request, response) {
+
+    var id = request.params.id;
+    return response.send({message: id + 2 +" da"});
+
+})
+
+app.get("/korisnik", function (request, response) {
+
+    var id = request.params.id;
+    return response.send({message: id + 2 +" da"});
+
+})
+
+
 // set port
 app.listen(3000, function () {
     console.log('Node app is running on port 3000');
