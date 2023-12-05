@@ -25,6 +25,15 @@ app.post("/podaci", function (request, response) {
 
 });
 
+app.post("/korisnik", function (request, response) {
+
+    var prezime =request.body.prezime;
+    var ime =request.body.ime;
+    return response.send({message: ime + prezime + " "});
+    
+
+});
+
 // set port
 app.listen(3000, function () {
     console.log('Node app is running on port 3000');
