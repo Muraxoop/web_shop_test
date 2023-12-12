@@ -34,12 +34,12 @@ app.get("/korisnik", function (request, response) {
 app.get('/korisnik/:id', function (request, response) {
     let useful_part_id = request.params.id;
     if (!useful_part_id) {
-    return response.status(400).send({ error: true, message: 'Please provideuseful_part_id' });
+    return response.status(400).send({ error: true, message: 'Molim dajte id od korisnika' });
     }
     dbConn.query('SELECT * FROM korisnik id=?', useful_part_id, function
     (error, results, fields) {
     if (error) throw error;
-    return response.send({ error: false, data: results[0], message:'useful_part list.' });
+    return response.send({ error: false, data: results[0], message:'Popis korisnika pod tim ID.' });
     });
     });
     
@@ -47,24 +47,17 @@ app.get('/korisnik/:id', function (request, response) {
 app.delete('/korisnik/:id', function (request, response) {
     let korisnik_id = request.params.id;
     if (!korisnik_id) {
-        return response.status(400).send({ error: true, message: 'Please provide korisnik_id' });
+        return response.status(400).send({ error: true, message: 'Molim dajte korisnik_id' });
     }
     dbConn.query('DELETE FROM korisnik WHERE id = ?', korisnik_id, function (error, results, fields) {
         if (error) throw error;
         if (results.affectedRows === 0) {
-            return response.send({ error: true, message: 'Korisnik not found.' });
+            return response.send({ error: true, message: 'Korisnik nije naden.' });
         }
-        return response.send({ error: false, message: 'Korisnik deleted successfully.' });
+        return response.send({ error: false, message: 'Korisnik uspjesno izbrisan ' });
     });
 });
 
-
-app.delete("/korisnik/:id", function (request, response){
-  
-    var id = request.params.id;
-    return response.send({message: "DELETE" + id});  
-
-})
 
 // set port
 app.listen(3000, function () {
