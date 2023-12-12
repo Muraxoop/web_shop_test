@@ -43,6 +43,21 @@ app.get('/korisnik/:id', function (request, response) {
     });
     });
     
+// Delete korisnik with id
+app.delete('/korisnik/:id', function (request, response) {
+    let korisnik_id = request.params.id;
+    if (!korisnik_id) {
+        return response.status(400).send({ error: true, message: 'Please provide korisnik_id' });
+    }
+    dbConn.query('DELETE FROM korisnik WHERE id = ?', korisnik_id, function (error, results, fields) {
+        if (error) throw error;
+        if (results.affectedRows === 0) {
+            return response.send({ error: true, message: 'Korisnik not found.' });
+        }
+        return response.send({ error: false, message: 'Korisnik deleted successfully.' });
+    });
+});
+
 
 app.delete("/korisnik/:id", function (request, response){
   
