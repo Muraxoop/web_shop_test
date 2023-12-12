@@ -58,6 +58,25 @@ app.delete('/korisnik/:id', function (request, response) {
     });
 });
 
+app.post('/korisnik', function (request, response) {
+    var ime = request.body.ime;
+    var prezime = request.body.prezime;
+    var tel = request.body.tel;
+    dbConn.query('INSERT INTO korisnik VALUES (NULL, ?, ?, ?)'), [ime, prezime,tel], function (error, results, fields){
+        if (error) throw error;
+        return response.send ({error: false, data: results, message: 'INSERT korisnik ime='+ime});
+    }
+})
+
+app.put('/korisnik', function (request, response) {
+    var id = request.params.id;
+    var tel = request.body.tel;
+    dbConn.query('UPDATE korisnik SET tel=? WHERE id=?'), [tel, id], function (error, results, fields){
+        if (error) throw error;
+        return response.send ({error: false, data: results, message: 'UPDATE korisnik id='+id+' tel=' +tel });
+    }
+})
+
 
 // set port
 app.listen(3000, function () {
